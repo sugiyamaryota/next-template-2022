@@ -5,10 +5,7 @@ import styles from '../styles/Home.module.css'
 
 const Home: NextPage = (props) => {
 
-  fetch('/reviews')
-    .then((res) => res.json())
-
-  fetch('/book')
+  fetch('https://myapi.dev/reviews')
     .then((res) => res.json())
 
   return (
@@ -78,12 +75,10 @@ const Home: NextPage = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // Server-side requests are mocked by `mocks/server.js`.
-  const res = await fetch('http://localhost:3000/book')
-  const book = await res.json()
-
+  const data = await fetch('https://myapi.dev/reviews').then((res) => res.json());
   return {
     props: {
-      book,
+      data,
     },
   }
 }

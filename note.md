@@ -49,6 +49,8 @@ export async function getServerSideProps() {
 TypeError: Only absolute URLs are supported
 ```
 
+https://zenn.dev/tttela/articles/73ca6bd57bd7b7f35c21
+
 絶対URLのみサポートしているらしい。つまり、相対パスでエンドポイントを記述しているのが原因だった。
 解決した。
 
@@ -67,6 +69,16 @@ export async function getServerSideProps() {
 ```
 
 https://github.com/mswjs/msw/issues/992#issuecomment-976399901
+
+
+似たようなエラーが出た。ただ、動作はしている？
+PageComponentで記述していたfetchが相対パスだったため、エラーが出ていたのか？
+
+```bash
+unhandledRejection: TypeError: Only absolute URLs are supported
+```
+
+エンドポイントをhttpsの外部にして定義してアクセスするようにすれば、正常にはなった。
 
 ## Storybook
 

@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 
 export const handlers = [
-  rest.get('/book', (req, res, ctx) => {
+  rest.get('https://myapi.dev/csr', (req, res, ctx) => {
     return res(
       ctx.json({
         title: 'Lord of the Rings',
@@ -11,7 +11,7 @@ export const handlers = [
       })
     )
   }),
-  rest.get('/reviews', (req, res, ctx) => {
+  rest.get('https://myapi.dev/reviews', (req, res, ctx) => {
     return res(
       ctx.json([
         {
