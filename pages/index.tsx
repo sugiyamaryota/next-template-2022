@@ -4,6 +4,10 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = (props) => {
+
+  fetch('/login')
+    .then((res) => res.json())
+
   return (
     <div className={styles.container}>
       <Head>
