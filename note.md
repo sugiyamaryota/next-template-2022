@@ -79,6 +79,7 @@ unhandledRejection: TypeError: Only absolute URLs are supported
 ```
 
 エンドポイントをhttpsの外部にして定義してアクセスするようにすれば、正常にはなった。
+httpにしても動作した。localhostだと成功しないのか？
 
 ## Storybook
 
