@@ -1,11 +1,14 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = (props) => {
 
-  fetch('/login')
+  fetch('/reviews')
+    .then((res) => res.json())
+
+  fetch('/book')
     .then((res) => res.json())
 
   return (
@@ -73,9 +76,9 @@ const Home: NextPage = (props) => {
   )
 }
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   // Server-side requests are mocked by `mocks/server.js`.
-  const res = await fetch('https://my.backend/book')
+  const res = await fetch('http://localhost:3000/book')
   const book = await res.json()
 
   return {

@@ -11,18 +11,62 @@ developとproductionもenvで管理してしまえば手間がない。
 
 https://github.com/vercel/next.js/tree/canary/examples/with-msw
 
-いかがでると、service workerが有効になっている。
+以下が出ると、service workerが有効になっている。
 
 `[MSW] Mocking enabled`
 
-```shell
+`yarn dev`で以下のエラーが出ていた。
+
+```bash
 fetch failed
 ```
 
-以下の手順で解決した。
-- Nodeのバージョンを16系にする
-- `yarn build`をする
-- `yarn dev`をする
+参考にあった記述を行ったが、これはserverSideからデータを取り出すらしい（まだわかっていない）
+`yarn dev`ではサーバーサイドから返すように定義していなかったので、これに問題がありそうだった。
+そして、該当コードを削除すると正常になった。ただ、buildする際に、client側で該当APIを使用している場合は必要になる。
+fetchを削除すると動作したので、getServerSidePropsが問題にはなっていない。
+
+https://github.com/vercel/next.js/issues/16500
+
+
+```js
+export async function getServerSideProps() {
+  // Server-side requests are mocked by `mocks/server.js`.
+  const res = await fetch('/login')
+  const login = await res.json()
+
+  return {
+    props: {
+      login,
+    },
+  }
+}
+```
+
+以下のエラーが出た。
+
+```bash
+TypeError: Only absolute URLs are supported
+```
+
+絶対URLのみサポートしているらしい。つまり、相対パスでエンドポイントを記述しているのが原因だった。
+解決した。
+
+```js
+export async function getServerSideProps() {
+  // Server-side requests are mocked by `mocks/server.js`.
+  const res = await fetch('http://localhost:3000/login')
+  const login = await res.json()
+
+  return {
+    props: {
+      login,
+    },
+  }
+}
+```
+
+https://github.com/mswjs/msw/issues/992#issuecomment-976399901
 
 ## Storybook
 
@@ -44,3 +88,7 @@ module.exports = {
 ```
 
 https://dev.classmethod.jp/articles/tried-to-add-storybook-to-nextjs-project/
+
+### msw-storybook-addon
+
+https://storybook.js.org/addons/msw-storybook-addon/
