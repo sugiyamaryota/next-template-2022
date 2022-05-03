@@ -3,7 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-const Home: NextPage = () => {
+const Home: NextPage = (props) => {
+  console.log(props,'piyo')
   return (
     <div className={styles.container}>
       <Head>
@@ -67,6 +68,18 @@ const Home: NextPage = () => {
       </footer>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  // Server-side requests are mocked by `mocks/server.js`.
+  const res = await fetch('https://my.backend/book')
+  const book = await res.json()
+
+  return {
+    props: {
+      book,
+    },
+  }
 }
 
 export default Home
