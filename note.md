@@ -105,3 +105,16 @@ https://dev.classmethod.jp/articles/tried-to-add-storybook-to-nextjs-project/
 ### msw-storybook-addon
 
 https://storybook.js.org/addons/msw-storybook-addon/
+
+## Relay
+
+参考記事に従ったところ、`yarn relay`で以下のエラーが出た。
+```
+Found argument '--exclude' which wasn't expected, or isn't valid in this context
+```
+
+https://zenn.dev/snowwshiro/articles/e0386f9cb6743f
+
+下記が該当しているかもしれない。
+
+https://zenn.dev/izumin/scraps/b53adbbba65f6b
