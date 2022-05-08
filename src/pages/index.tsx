@@ -29,7 +29,7 @@ const Home: NextPage = (props) => {
     return () => {
       isMounted = false;
     };
-  }, [fetchGraphQL]);
+  }, []);
 
   fetch('https://myapi.dev/reviews')
     .then((res) => res.json())

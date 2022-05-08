@@ -9,7 +9,8 @@
     "lint": "next lint",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s public",
-    "relay": "relay-compiler --src ./ --exclude '**/.next/**' '**/node_modules/**' '**/test/**'  '**/__generated__/**' --exclude '**/schema/**' --schema ./src/schema/schema.graphql --extensions js jsx ts tsx"
+    "relay": "relay-compiler --src ./ --exclude '**/.next/**' '**/node_modules/**' '**/test/**'  '**/__generated__/**' --exclude '**/schema/**' --schema ./src/schema/schema.graphql --extensions js jsx ts tsx",
+    "schema": "graphql get-schema -e dev"
   },
   "dependencies": {
     "msw": "^0.39.2",
@@ -17,8 +18,8 @@
     "next": "12.1.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-relay": "^13.2.0",
-    "relay-runtime": "^13.2.0"
+    "react-relay": "^9.0.0",
+    "relay-compiler": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
@@ -38,8 +39,9 @@
     "babel-plugin-relay": "^13.2.0",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
-    "graphql": "^16.4.0",
-    "relay-compiler": "^13.2.0",
+    "graphql": "^14.6.0",
+    "graphql-cli": "^3.0.14",
+    "relay-compiler": "^9.0.0",
     "typescript": "4.6.4"
   },
   "msw": {

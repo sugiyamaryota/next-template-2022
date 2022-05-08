@@ -2,7 +2,12 @@
     "schemaPath": "src/schema/schema.graphql",
     "extensions": {
       "endpoints": {
-        "dev": "https://api.github.com/graphql"
+        "dev": {
+          "url": "https://api.github.com/graphql",
+          "headers": {
+            "Authorization": "Bearer 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"
+          }
+        }
       }
     }
   }

@@ -118,3 +118,11 @@ https://zenn.dev/snowwshiro/articles/e0386f9cb6743f
 下記が該当しているかもしれない。
 
 https://zenn.dev/izumin/scraps/b53adbbba65f6b
+
+以下を参考に。
+https://github.com/vercel/next.js/tree/canary/examples/with-relay-modern
+
+https://www.graphql-cli.com/introduction
+
+graphqlでtokenを扱うAPIを使用する場合、schemaを作る際に利用するconfigファイルにheaderを記述しないといけない。
+https://github.com/Urigo/graphql-cli/issues/646#issuecomment-555082850
